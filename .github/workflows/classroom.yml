@@ -1,0 +1,16 @@
+name: GitHub Classroom Workflow
+
+on: [pull_request, workflow_dispatch]
+
+jobs:
+  build:
+    name: Autograding
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+        with:
+          repository: ucudal/AED-2022-UT1-PD1-EJ5-tests
+          token: ${{ secrets.AUTOGRADER_PAC }}
+          path: src/test/java/
+      - uses: education/autograding@v1
